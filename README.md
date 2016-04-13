@@ -1,7 +1,7 @@
 #School Journal Listening Post
 ##School Journal Listening Post for New Zealand Schools.
 
-###Introduction
+####Introduction
 This School Journal Listening Post is a PHP developed version which is designed to run a lot more dynamically than earlier versions found around the web. 
 This particular version has been developed from a prior version using the audio files and journal covers assembled by Frank Lewthwaite and Plugged-In in 2009. These files are Copyright to the Crown, not to Plugged-In.co.nz.  Plugged-In.co.nz has since been dis-established. 
 
@@ -32,4 +32,12 @@ If there are any issues with your installation, please do not ask for support. I
 I will endeavour to update the project as I find fixes to bugs, and as new recordings / journals come along. 
 
 Please feel free to join this project if you would like to continue to develop it and add to it as time goes by.
+
+####Terms & Conditions
+
+Copyright &copy; 2016  Al Ingham
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 
