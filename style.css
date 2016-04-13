@@ -1,0 +1,100 @@
+@import url('http://fonts.googleapis.com/css?family=Fredoka+One|Roboto+Condensed');
+
+/* General */
+html, body {
+	padding:0;
+	margin:0;
+}
+body {
+	font-family: 'Roboto Condensed', Arial, sans-serif;
+	background:#f4f4f4;
+}
+#content-wrapper {
+	margin:0 auto;
+	width:980px;
+	background:#fff;
+	padding:12px 22px;
+	-webkit-box-shadow: 0px 0px 12px 1px rgba(0,0,0,0.23);
+	-moz-box-shadow: 0px 0px 12px 1px rgba(0,0,0,0.23);
+	box-shadow: 0px 0px 12px 1px rgba(0,0,0,0.23);
+}
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Fredoka One', Arial, sans-serif;
+}
+.version {
+	float:right;
+	text-align: right;
+}
+.sub-text {
+	font-size:12px;
+}
+a:link, a:visited {
+    color:#4086EE;
+    text-decoration:none;
+}
+a:hover, a:visited:hover {
+    color:#4086EE;
+    text-decoration:underline;
+}
+
+/* Index */
+ul.categories {
+	display:inline-block;
+}
+ul.categories li {
+	display:block;
+	width:460px;
+	height:330px;
+	float:left;
+}
+ul.categories p {
+	font-size:11px;
+}
+ul.categories img {
+	float:left;
+}
+ul.categories li ul.child-categories {
+	padding:0 0 18px 0px;
+	margin:10px 0 0 20px;
+	float:left;
+	width:100px;
+}
+ul.child-categories li {
+	padding: 0 0 1px 0;
+	height:auto;
+}
+
+/* Directory Page */
+ul.collection {
+	list-style:none;
+	display:inline-block;
+	vertical-align: top;
+}
+ul.collection li.item {
+	float:left;
+	width:450px;
+	vertical-align: top;
+}
+ul.collection li.item img {
+	float:left; 
+	clear:both;
+	padding:3px;
+}
+ul.collection li.item img.QR {
+	float:none; 
+	clear:both;
+	padding:3px;
+}
+ul.collection li.item p {
+	float:left;
+	padding-left:12px;
+	vertical-align: top;
+}
+ul.collection li.item a {
+	vertical-align: top;
+}
+
+.footer {
+    font-size:60%;
+    margin-bottom:30px;
+}
