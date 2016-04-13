@@ -9,7 +9,7 @@ This particular version has been developed from a prior version using the audio 
 
 The School I work for has a creative common's policy on all work carried out by teachers it employs. This project was initially developed for use by the school only. However, due to increasing interest in the project, I have made this project open source on GitHub for you to use at your school.
 
-All Audio files and cover artworks are Copyright (C) Crown, under the Ministry of Education.
+All Audio files and cover artworks are Copyright &copy; Crown, under the Ministry of Education.
 More information can be found here: http://literacyonline.tki.org.nz/Literacy-Online/Teacher-needs/Instructional-Series/School-Journal/Audio-files
 
 PHP developed by Al Ingham.
