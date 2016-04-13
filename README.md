@@ -17,11 +17,11 @@ www.alingham.com
 
 ##How to Use
 You will need:
-* Web server
+* Web server - with at least 2.1Gb
 * PHP enabled
 * FTP client
 
-1. Download the repository to your desktop or desired location. This may be a large download given the number of audio files on hand.
+1. Download the repository to your desktop or desired location. This will be a large download (2.1Gb) given the number of audio files on hand.
 2. Open the .zip file and move contents to desired **local** location.
 3. Using your FTP client, upload the files from the local location to the desired **server** location. 
 4. Visit your server location to check that it works!
