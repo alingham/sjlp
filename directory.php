@@ -66,65 +66,90 @@ $files = array_diff(scandir($dir, 1), array('..', '.'));
 	<?php
 	$disptitle = between_last('/', '/', $dir);
 	echo "<h2>" . $disptitle . "</h2>";
-	
+	$i = 0;
 	echo "<ul class=\"collection\">";
 	foreach ($files as $file) {
-			
 		if($cat == "Ready to Read"){
+			$i++;
 			$year = substr($file, 3, 4);
 			$title = substr($file, 10, -4);
 			$colour = $disptitle;
 			$link = "/sjlp/" . $dir . $file;
-			$QR = "/sjlp/images/QR/" . $colour . " - " . $title . ".jpg";
 			$imglink = "/sjlp/images/" . $preimg . "-" . $year . " - " . $colour . " - " . $title . ".jpg";
 			
 			echo "<li class=\"item\">
-				<img src=\"" . $QR. "\" width=120 height=120 alt=\"" . $title . " QR Code\" class=\"QR\" />
+				<div id=\"qrcode-". $i ."\" class=\"QR\"></div>
+				<script type=\"text/javascript\">
+				new QRCode(document.getElementById(\"qrcode-". $i ."\"), { width:120, height:120, text:\"". $_SERVER['HTTP_HOST'] . $link . "\"} );
+				</script>
 			<a href=\"" . $link . "\">
 				<img src=\"" . $imglink . "\" width=85 height=120 alt=\"" . $title . "\" /></a>
-				<a href=\"" . $link . "\">" . $title . "</a> - (" . $year . ")</p></li>";
+				<span class=\"book-title\"><a href=\"" . $link . "\">" . $title . "</a> - (" . $year . ")</span></p></li>";
 		} 
 		else if($cat == "Junior Journal"){
+			$i++;
 			$number = substr($file, 6, 2);
 			$title = substr($file, 9,-4);
 			$link = "/sjlp/" . $dir . "/" . $file;
 			$imglink = "/sjlp/images/" . $preimg . "-" . $number . ".jpg";
-			echo "<li class=\"item\"><a href=\"" . $link . "\">
+			echo "<li class=\"item\">
+				<div id=\"qrcode-". $i ."\" class=\"QR\"></div>
+				<script type=\"text/javascript\">
+				new QRCode(document.getElementById(\"qrcode-". $i ."\"), { width:120, height:120, text:\"". $_SERVER['HTTP_HOST'] . $link . "\"} );
+				</script>
+				<a href=\"" . $link . "\">
 					<img src=\"" . $imglink . "\" width=85 height=120 alt=\"" . $title . "\" /></a>
 					<p>" . $cat . " Number " . $number . "<br /> 
 					<a href=\"" . $link . "\">" . $title . "</a></p></li>";
 		}
 		else if($cat == "School Journal Level 2"){
+			$i++;
 			$year = substr($file, 8, 2);	
 			$month = substr($file, 11, 2);
 			$title = substr($file, 14,-4);
 			$link = "/sjlp/" . $dir . "/" . $file;
 			$imglink = "/sjlp/images/SJ-L2-" . $year . "-" . $month .".jpg";
-			echo "<li class=\"item\"><a href=\"" . $link . "\">
+			echo "<li class=\"item\">
+				<div id=\"qrcode-". $i ."\" class=\"QR\"></div>
+				<script type=\"text/javascript\">
+				new QRCode(document.getElementById(\"qrcode-". $i ."\"), { width:120, height:120, text:\"" . $_SERVER['HTTP_HOST'] . $link . "\"} );
+				</script>
+				<a href=\"" . $link . "\">
 					<img src=\"" . $imglink . "\" width=85 height=120 alt=\"" . $title . "\" /></a>
 					<p>" . $cat . "<br /> 
 					20" . $year . "<br />
 					<a href=\"" . $link . "\">" . $title . "</a></p></li>";
 		}
 		else if($cat == "Story Library") {
+			$i++;
 			$title = substr($file, 3,-4);
 			$number = substr($dir, 37, 1);
 			$link = "/sjlp/" . $dir . "/" . $file;
 			$imglink = "/sjlp/images/SJSL-" . $number . " - " . $title .".jpg";
-			echo "<li class=\"item\"><a href=\"" . $link . "\">
+			echo "<li class=\"item\">
+				<div id=\"qrcode-". $i ."\" class=\"QR\"></div>
+				<script type=\"text/javascript\">
+				new QRCode(document.getElementById(\"qrcode-". $i ."\"), { width:120, height:120, text:\"" . $_SERVER['HTTP_HOST'] . $link . "\"} );
+				</script>
+					<a href=\"" . $link . "\">
 					<img src=\"" . $imglink . "\" width=85 height=120 alt=\"" . $title . "\" /></a>
 					<p>" . $cat . "<br /> 
 					<a href=\"" . $link . "\">" . $title . "</a></p></li>";
 		} 	
-		else { 
+		else {
+			$i++; 
 			$year = substr($file, 0, 2);
 			$part = substr($file, 3, 1);
 			$number = substr($file, 5, 1);
 			$title = substr($file, 7, -4);
 			$link = "/sjlp/" . $dir . "/" . $file;
 			$imglink = "/sjlp/images/" . $preimg . "-Part" . $part . " - " . $year . "-" . $part . "-" . $number . ".jpg";
-			
-			echo "<li class=\"item\"><a href=\"" . $link . "\">
+			echo "<li class=\"item\">
+				<div id=\"qrcode-". $i ."\" class=\"QR\"></div>
+				<script type=\"text/javascript\">
+				new QRCode(document.getElementById(\"qrcode-". $i ."\"), { width:120, height:120, text:\"" . $_SERVER['HTTP_HOST'] . $link . "\"} );
+				</script>
+					<a href=\"" . $link . "\">
 					<img src=\"" . $imglink . "\" width=85 height=120 alt=\"" . $title . "\" /></a>
 					<p>" . $cat . "<br />
 					Part " . $part . " Number " . $number . "<br /> 
@@ -134,7 +159,7 @@ $files = array_diff(scandir($dir, 1), array('..', '.'));
 		
 		
 		
-	}
+	} // end of For Loop
 	
 	echo "</ul>";
 	?>	
