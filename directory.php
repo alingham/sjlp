@@ -61,7 +61,7 @@ $files = array_diff(scandir($dir, 1), array('..', '.'));
 <body>
 	<div id="content-wrapper">
 	<h1>School Journal Listening Post</h1>
-	<h2><?php echo $cat .', '. $dir; ?></h2>
+	<p><?php echo $cat .', '. $dir; ?></p>
 	<p><a href="index.php">Back</a></p>
 	<?php
 	$disptitle = between_last('/', '/', $dir);
@@ -69,87 +69,145 @@ $files = array_diff(scandir($dir, 1), array('..', '.'));
 	$i = 0;
 	echo "<ul class=\"collection\">";
 	foreach ($files as $file) {
+		
+		//========================================READY TO READ===============================================//
 		if($cat == "Ready to Read"){
 			$i++;
 			$year = substr($file, 3, 4);
 			$title = substr($file, 10, -4);
 			$colour = $disptitle;
-			$link = "/sjlp/" . $dir . $file;
-			$imglink = "/sjlp/images/" . $preimg . "-" . $year . " - " . $colour . " - " . $title . ".jpg";
+			$link = "/sjlp/audio/" . $dir . $file;
+			$imglink = "/sjlp/images/ReadytoRead/" . $preimg . "-" . $year . " - " . $colour . " - " . $title . ".jpg";
 			
-			echo "<li class=\"item\">
-				<div id=\"qrcode-". $i ."\" class=\"QR\"></div>
+		//Create List Item	
+			echo "<li class=\"item\">";
+			//Display QR Code
+			if($qr_display == true) {
+				echo "<div id=\"qrcode-". $i ."\" class=\"QR\"></div>
 				<script type=\"text/javascript\">
 				new QRCode(document.getElementById(\"qrcode-". $i ."\"), { width:120, height:120, text:\"". $_SERVER['HTTP_HOST'] . $link . "\"} );
-				</script>
-			<a href=\"" . $link . "\">
+				</script>";
+			} //end if qr_display
+			
+			echo "<a href=\"" . $link . "\">
 				<img src=\"" . $imglink . "\" width=85 height=120 alt=\"" . $title . "\" /></a>
 				<span class=\"book-title\"><a href=\"" . $link . "\">" . $title . "</a> - (" . $year . ")</span></p></li>";
 		} 
+		
+		//========================================JUNIOR JOURNAL===============================================//
 		else if($cat == "Junior Journal"){
 			$i++;
 			$number = substr($file, 6, 2);
 			$title = substr($file, 9,-4);
-			$link = "/sjlp/" . $dir . "/" . $file;
-			$imglink = "/sjlp/images/" . $preimg . "-" . $number . ".jpg";
-			echo "<li class=\"item\">
-				<div id=\"qrcode-". $i ."\" class=\"QR\"></div>
-				<script type=\"text/javascript\">
-				new QRCode(document.getElementById(\"qrcode-". $i ."\"), { width:120, height:120, text:\"". $_SERVER['HTTP_HOST'] . $link . "\"} );
-				</script>
-				<a href=\"" . $link . "\">
+			$link = "/sjlp/audio/" . $dir . "/" . $file;
+			$imglink = "/sjlp/images/JuniorJournal/" . $preimg . "-" . $number . ".jpg";
+		//Create List item	
+			echo "<li class=\"item\">";
+			
+				//Display QR Code
+				if($qr_display == true) {
+					echo "<div id=\"qrcode-". $i ."\" class=\"QR\"></div>
+					<script type=\"text/javascript\">
+					new QRCode(document.getElementById(\"qrcode-". $i ."\"), { width:120, height:120, text:\"". $_SERVER['HTTP_HOST'] . $link . "\"} );
+					</script>";
+				} //end of if qr_display
+				echo "<a href=\"" . $link . "\">
 					<img src=\"" . $imglink . "\" width=85 height=120 alt=\"" . $title . "\" /></a>
 					<p>" . $cat . " Number " . $number . "<br /> 
 					<a href=\"" . $link . "\">" . $title . "</a></p></li>";
 		}
+		
+		
+		//========================================SCHOOL JOURNAL - LEVEL 2===============================================//
 		else if($cat == "School Journal Level 2"){
 			$i++;
 			$year = substr($file, 8, 2);	
 			$month = substr($file, 11, 2);
 			$title = substr($file, 14,-4);
-			$link = "/sjlp/" . $dir . "/" . $file;
-			$imglink = "/sjlp/images/SJ-L2-" . $year . "-" . $month .".jpg";
-			echo "<li class=\"item\">
-				<div id=\"qrcode-". $i ."\" class=\"QR\"></div>
+			$link = "/sjlp/audio/" . $dir . "/" . $file;
+			$imglink = "/sjlp/images/SchoolJournal-Level2/SJ-L2-" . $year . "-" . $month .".jpg";
+			echo "<li class=\"item\">";
+			
+			//Display QR Code
+			if($qr_display == true) {
+				echo "<div id=\"qrcode-". $i ."\" class=\"QR\"></div>
 				<script type=\"text/javascript\">
 				new QRCode(document.getElementById(\"qrcode-". $i ."\"), { width:120, height:120, text:\"" . $_SERVER['HTTP_HOST'] . $link . "\"} );
-				</script>
-				<a href=\"" . $link . "\">
+				</script>";
+			}//end of if qr_display
+				echo "<a href=\"" . $link . "\">
 					<img src=\"" . $imglink . "\" width=85 height=120 alt=\"" . $title . "\" /></a>
 					<p>" . $cat . "<br /> 
 					20" . $year . "<br />
 					<a href=\"" . $link . "\">" . $title . "</a></p></li>";
 		}
+		//========================================STORY LIBRARY===============================================//
 		else if($cat == "Story Library") {
 			$i++;
 			$title = substr($file, 3,-4);
 			$number = substr($dir, 37, 1);
-			$link = "/sjlp/" . $dir . "/" . $file;
-			$imglink = "/sjlp/images/SJSL-" . $number . " - " . $title .".jpg";
-			echo "<li class=\"item\">
-				<div id=\"qrcode-". $i ."\" class=\"QR\"></div>
+			$link = "/sjlp/audio/" . $dir . "/" . $file;
+			$imglink = "/sjlp/images/SchoolJournal-StoryLibrary/SJSL-" . $number . " - " . $title .".jpg";
+			echo "<li class=\"item\">";
+			
+			//Display QR Code
+			if($qr_display == true) {
+				echo "<div id=\"qrcode-". $i ."\" class=\"QR\"></div>
 				<script type=\"text/javascript\">
 				new QRCode(document.getElementById(\"qrcode-". $i ."\"), { width:120, height:120, text:\"" . $_SERVER['HTTP_HOST'] . $link . "\"} );
-				</script>
-					<a href=\"" . $link . "\">
+				</script>";
+			}//end if qr_display
+					echo "<a href=\"" . $link . "\">
 					<img src=\"" . $imglink . "\" width=85 height=120 alt=\"" . $title . "\" /></a>
 					<p>" . $cat . "<br /> 
 					<a href=\"" . $link . "\">" . $title . "</a></p></li>";
 		} 	
+		
+		//========================================SCHOOL JOURNAL===============================================//
+		else if($cat == "School Journal") {
+			$i++;
+			$year = substr($file, 0, 2);
+			$part = substr($file, 3, 1);
+			$number = substr($file, 5, 1);
+			$title = substr($file, 7, -4);
+			$link = "/sjlp/audio/" . $dir . "/" . $file;
+			$imglink = "/sjlp/images/SchoolJournal-Parts/" . $preimg . "-Part" . $part . " - " . $year . "-" . $part . "-" . $number . ".jpg";
+			echo "<li class=\"item\">";
+			
+			//Display QR Code
+			if($qr_display == true) {
+				echo "<div id=\"qrcode-". $i ."\" class=\"QR\"></div>
+				<script type=\"text/javascript\">
+				new QRCode(document.getElementById(\"qrcode-". $i ."\"), { width:120, height:120, text:\"" . $_SERVER['HTTP_HOST'] . $link . "\"} );
+				</script>";
+			}//end if qr_display
+					echo "<a href=\"" . $link . "\">
+					<img src=\"" . $imglink . "\" width=85 height=120 alt=\"" . $title . "\" /></a>
+					<p>" . $cat . "<br />
+					Part " . $part . " Number " . $number . "<br /> 
+					20" . $year . "<br />
+					<a href=\"" . $link . "\">" . $title . "</a></p></li>";
+		} 	
+		
+		
+		// everything else...                                       
 		else {
 			$i++; 
 			$year = substr($file, 0, 2);
 			$part = substr($file, 3, 1);
 			$number = substr($file, 5, 1);
 			$title = substr($file, 7, -4);
-			$link = "/sjlp/" . $dir . "/" . $file;
+			$link = "/sjlp/audio/" . $dir . "/" . $file;
 			$imglink = "/sjlp/images/" . $preimg . "-Part" . $part . " - " . $year . "-" . $part . "-" . $number . ".jpg";
-			echo "<li class=\"item\">
-				<div id=\"qrcode-". $i ."\" class=\"QR\"></div>
+			echo "<li class=\"item\">";
+			//Display QR Code
+			if($qr_display == true) {
+				echo "<div id=\"qrcode-". $i ."\" class=\"QR\"></div>
 				<script type=\"text/javascript\">
 				new QRCode(document.getElementById(\"qrcode-". $i ."\"), { width:120, height:120, text:\"" . $_SERVER['HTTP_HOST'] . $link . "\"} );
-				</script>
-					<a href=\"" . $link . "\">
+				</script>";
+			} //end of if qr_display
+					echo "<a href=\"" . $link . "\">
 					<img src=\"" . $imglink . "\" width=85 height=120 alt=\"" . $title . "\" /></a>
 					<p>" . $cat . "<br />
 					Part " . $part . " Number " . $number . "<br /> 
@@ -163,14 +221,6 @@ $files = array_diff(scandir($dir, 1), array('..', '.'));
 	
 	echo "</ul>";
 	?>	
-		
-		
-		
-	<!--	<h3>Resources</h3>
-		<?php
-		echo "<a href=\"TeacherResources/" . $cat . " - " . $disptitle . "-QR.pdf\">" . $cat . " - " . $disptitle . " QR Codes - (PDF, A4 Pages, 3x5 per page)</a>";
-		?>
-	-->
 		
 		
 <?php 

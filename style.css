@@ -76,21 +76,26 @@ ul.collection li.item {
 	vertical-align: top;
 }
 ul.collection li.item img {
-	float:left; 
-	clear:both;
-	padding:3px;
-}
-ul.collection li.item img.QR {
 	float:none; 
 	clear:both;
 	padding:3px;
 }
+ul.collection li.item div.QR > img {
+	float:left; 
+	clear:both;
+	padding:3px;
+}
+.QR {
+    display:inline-block;
+}
 ul.collection li.item p {
-	float:left;
+	float:right;
 	padding-left:12px;
 	vertical-align: top;
+	text-align: left;
+	width:210px;
 }
-ul.collection li.item a {
+ul.collection li.item span.book-title, ul.collection li.item span.book-title a {
 	vertical-align: top;
 }
 
