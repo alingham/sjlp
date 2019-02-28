@@ -28,6 +28,13 @@ h1, h2, h3, h4, h5, h6 {
 .sub-text {
 	font-size:12px;
 }
+.categoryname {
+    font-family: 'Fredoka One', Arial, sans-serif;
+    font-size:22px;
+}
+.dir {
+    color:#ccc;
+}
 a:link, a:visited {
     color:#4086EE;
     text-decoration:none;

@@ -6,6 +6,7 @@ include("options.php");
 		<title>School Journal Listening Post - version 2</title>
 		<link href="/sjlp/style.css" rel="stylesheet">
 		<meta name="robots" content="noindex" />
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 		
 		<script type="text/javascript" src="js/jquery.min.js"></script>
 		<script type="text/javascript" src="js/qrcode.js"></script>

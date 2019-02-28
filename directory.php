@@ -3,7 +3,7 @@ if(isset($_GET['dir'])){
 	$dir = $_GET['dir'];
 }
 else {
-	$dir    = 'SchoolJournal-Parts1&2-CDTracks/SchoolJournalParts1&2-2001/';
+	$dir    = 'SchoolJournal-Level2';
 }
 if(isset($_GET['cat'])){
 	$cat = $_GET['cat'];
@@ -12,7 +12,8 @@ if(isset($_GET['cat'])){
 else {
 	$cat = 'School Journal';
 }
-
+//update dir to match new folder structure. 
+$dir = "audio/" . $dir;
 
 function getCapitalLetters($str)
 
@@ -61,7 +62,7 @@ $files = array_diff(scandir($dir, 1), array('..', '.'));
 <body>
 	<div id="content-wrapper">
 	<h1>School Journal Listening Post</h1>
-	<p><?php echo $cat .', '. $dir; ?></p>
+	<p><?php echo '<span class="categoryname">' . $cat .'</span>  -   <span class="dir">'. $dir . '</span>'; ?></p>
 	<p><a href="index.php">Back</a></p>
 	<?php
 	$disptitle = between_last('/', '/', $dir);
@@ -76,7 +77,7 @@ $files = array_diff(scandir($dir, 1), array('..', '.'));
 			$year = substr($file, 3, 4);
 			$title = substr($file, 10, -4);
 			$colour = $disptitle;
-			$link = "/sjlp/audio/" . $dir . $file;
+			$link = "/sjlp/" . $dir . $file;
 			$imglink = "/sjlp/images/ReadytoRead/" . $preimg . "-" . $year . " - " . $colour . " - " . $title . ".jpg";
 			
 		//Create List Item	
@@ -97,9 +98,9 @@ $files = array_diff(scandir($dir, 1), array('..', '.'));
 		//========================================JUNIOR JOURNAL===============================================//
 		else if($cat == "Junior Journal"){
 			$i++;
-			$number = substr($file, 6, 2);
-			$title = substr($file, 9,-4);
-			$link = "/sjlp/audio/" . $dir . "/" . $file;
+			$number = substr($file, 3, 2);
+			$title = substr($file, 6,-4);
+			$link = "/sjlp/" . $dir . "/" . $file;
 			$imglink = "/sjlp/images/JuniorJournal/" . $preimg . "-" . $number . ".jpg";
 		//Create List item	
 			echo "<li class=\"item\">";
@@ -124,7 +125,7 @@ $files = array_diff(scandir($dir, 1), array('..', '.'));
 			$year = substr($file, 8, 2);	
 			$month = substr($file, 11, 2);
 			$title = substr($file, 14,-4);
-			$link = "/sjlp/audio/" . $dir . "/" . $file;
+			$link = "/sjlp/" . $dir . "/" . $file;
 			$imglink = "/sjlp/images/SchoolJournal-Level2/SJ-L2-" . $year . "-" . $month .".jpg";
 			echo "<li class=\"item\">";
 			
@@ -146,7 +147,7 @@ $files = array_diff(scandir($dir, 1), array('..', '.'));
 			$i++;
 			$title = substr($file, 3,-4);
 			$number = substr($dir, 37, 1);
-			$link = "/sjlp/audio/" . $dir . "/" . $file;
+			$link = "/sjlp/" . $dir . "/" . $file;
 			$imglink = "/sjlp/images/SchoolJournal-StoryLibrary/SJSL-" . $number . " - " . $title .".jpg";
 			echo "<li class=\"item\">";
 			
@@ -170,7 +171,7 @@ $files = array_diff(scandir($dir, 1), array('..', '.'));
 			$part = substr($file, 3, 1);
 			$number = substr($file, 5, 1);
 			$title = substr($file, 7, -4);
-			$link = "/sjlp/audio/" . $dir . "/" . $file;
+			$link = "/sjlp/" . $dir . "/" . $file;
 			$imglink = "/sjlp/images/SchoolJournal-Parts/" . $preimg . "-Part" . $part . " - " . $year . "-" . $part . "-" . $number . ".jpg";
 			echo "<li class=\"item\">";
 			
@@ -197,7 +198,7 @@ $files = array_diff(scandir($dir, 1), array('..', '.'));
 			$part = substr($file, 3, 1);
 			$number = substr($file, 5, 1);
 			$title = substr($file, 7, -4);
-			$link = "/sjlp/audio/" . $dir . "/" . $file;
+			$link = "/sjlp/" . $dir . "/" . $file;
 			$imglink = "/sjlp/images/" . $preimg . "-Part" . $part . " - " . $year . "-" . $part . "-" . $number . ".jpg";
 			echo "<li class=\"item\">";
 			//Display QR Code
